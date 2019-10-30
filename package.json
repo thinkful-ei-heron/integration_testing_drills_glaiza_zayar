@@ -1,0 +1,33 @@
+{
+  "name": "integration_testing_drills_glaiza_zayar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-ei-heron/integration_testing_drills_glaiza_zayar.git"
+  },
+  "author": "Glaiza and Zayar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinkful-ei-heron/integration_testing_drills_glaiza_zayar/issues"
+  },
+  "homepage": "https://github.com/thinkful-ei-heron/integration_testing_drills_glaiza_zayar#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}
