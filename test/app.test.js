@@ -56,7 +56,36 @@ describe('Basic App working test', () => {
       .expect(200)
       .expect('Content-type', /json/)
       .then(res => {
+        expect(res.body).to.be.an('array')
+        expect(res.body.length).to.greaterThan(0);
+        expect(res.body[0]).to.be.an('object')
         expect(res.body[0]).to.include.all.keys('genre', 'country', 'film_title', 'avg_vote')
       })
   })
+
+  it('Check if avg vote filter returns movies that are equal to or greater than avg_vote', () => {
+    let rating = 3
+    return supertest(app)
+      .get('/movie')
+      .query({avg_vote:rating})
+      .set('Authorization', 'Bearer 1234567')
+      .expect(200)
+      .expect('Content-type', /json/)
+      .then(res => {
+        expect(res.body).to.be.an('array')
+        expect(res.body[0]).to.be.an('object')
+        let filtered = true
+        let i = 0
+        while (filtered && i < res.body.length-1) {
+          if (res.body[i].avg_vote <= rating) {
+            filtered = false
+            break
+          }
+          i++
+        }
+        expect(filtered).to.be.true
+
+      })
+  })
+
 })
